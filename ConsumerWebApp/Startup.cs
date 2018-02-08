@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using KafkaLib;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace WebApp
+namespace ConsumerWebApp2
 {
     public class Startup
     {
@@ -22,17 +21,6 @@ namespace WebApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddTransient<IKafkaProducer, KafkaProducer>(c => new KafkaProducer(new Dictionary<string, object>
-            {
-                {"bootstrap.servers", "localhost:9092"},
-                { "client.id", "event-counter" },
-                { "default.topic.config", new Dictionary<string, object>
-                    {
-                        { "acks", "all" }
-                    }
-                }
-                //{"bootstrap.servers", "localhost:9092"}
-            }));
             services.AddMvc();
         }
 

@@ -1,0 +1,59 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<ul>
+    <li>Click events count: <span id="clickEventsCount">0</span></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+
+@section Scripts
+{
+    <script src="~/js/signalr-client-1.0.0-alpha2-final.js"></script>
+    <script>
+        function connect(url) {
+            let transportType = signalR.TransportType[getParameterByName('transport')] ||
+                signalR.TransportType.WebSockets;
+            let logger = new signalR.ConsoleLogger(signalR.LogLevel.Information);
+            let connection =
+                new signalR.HubConnection(url,
+                    { transport: transportType, logger: logger });
+
+            connection.onclose(e => {
+                if (e) {
+                    console.log('Connection closed with error: ' + e, 'red');
+                } else {
+                    console.log('Disconnected', 'green');
+                }
+            });
+
+            connection.on('GetClickEvent',
+                (message) => {
+                    let $clickEventsCount = $("#clickEventsCount");
+                    let count = +$clickEventsCount.text();
+                    $clickEventsCount.text(++count);
+                    console.log(message);
+                });
+
+            connection.start().then(function() {
+            }).catch(err => console.log(err));
+        }
+
+        connect('http://10.10.41.235:41001/ClickEventService');
+        connect('http://10.10.41.235:41002/ClickEventService');
+
+        function getParameterByName(name, url) {
+            if (!url) {
+                url = window.location.href;
+            }
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        };
+    </script>
+}
