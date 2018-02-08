@@ -5,8 +5,7 @@
 <ul>
     <li>Click events count: <span id="clickEventsCount">0</span></li>
     <li>Test events count: <span id="textEventsCount">0</span></li>
-    <li></li>
-    <li></li>
+    <li>Mouse move events count: <span id="mouseMoveEventsCount">0</span></li>
 </ul>
 
 @section Scripts
@@ -45,6 +44,8 @@
         connect('http://10.10.41.235:41002/EventService', "#clickEventsCount");
         connect('http://10.10.41.235:41003/EventService', "#textEventsCount");
         connect('http://10.10.41.235:41004/EventService', "#textEventsCount");
+        connect('http://10.10.41.235:41005/EventService', "#mouseMoveEventsCount");
+        connect('http://10.10.41.235:41006/EventService', "#mouseMoveEventsCount");
 
         function getParameterByName(name, url) {
             if (!url) {

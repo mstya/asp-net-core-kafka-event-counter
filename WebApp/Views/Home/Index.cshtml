@@ -6,7 +6,6 @@
 <script>
         var PostClickUrl = "@Url.Action("PostClickEvent", "Event")";
         var PostTextUrl = "@Url.Action("PostTextEvent", "Event")";
-        var PostDropDownEvent = "@Url.Action("PostDropDownEvent", "Event")";
         var PostMouseMoveEvent = "@Url.Action("PostMouseMoveEvent", "Event")";
 </script>
 }
@@ -14,12 +13,5 @@
 <textarea id="textarea" placeholder="..."></textarea>
 
 <input type="button" id="button" value="Click me"/>
-
-<select id="select">
-    <option>1</option>
-    <option>2</option>
-    <option>3</option>
-    <option>4</option>
-</select>
 
 <div id="div" style="width: 300px; height: 300px; border: 1px solid black">Mouse move</div>

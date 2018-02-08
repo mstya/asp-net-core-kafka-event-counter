@@ -9,12 +9,6 @@
         post(PostClickUrl, JSON.stringify(this));
     });
 
-    $("#select").change(function () {
-        console.log(JSON.stringify(this));
-        post(PostDropDownEvent, JSON.stringify(this));
-
-    });
-
     $("#div").mousemove(function () {
         console.log(JSON.stringify(this));
         post(PostMouseMoveEvent, JSON.stringify(this));

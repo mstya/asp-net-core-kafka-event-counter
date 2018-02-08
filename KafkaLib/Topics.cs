@@ -8,6 +8,6 @@
 
         public static string PostDropDownEvent = "post-drop-down-event-topic";
 
-        public static string PostMouseMoveEvent = "post-mouse-move-event-topic";
+        public static string PostMouseMoveEvent = "post-mouse-move-event-topic2";
     }
 }

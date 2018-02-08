@@ -31,12 +31,6 @@ namespace WebApp.Controllers
         }
 
         [HttpPost]
-        public Task PostDropDownEvent(string data)
-        {
-            return producer.ProduceAsync(Topics.PostDropDownEvent, null, data, clickEventRand.Next(0, 1));
-        }
-
-        [HttpPost]
         public Task PostMouseMoveEvent(string data)
         {
             return producer.ProduceAsync(Topics.PostMouseMoveEvent, null, data, clickEventRand.Next(0, 1));
