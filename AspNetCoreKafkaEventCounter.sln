@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2020
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApp", "WebApp\WebApp.csproj", "{DE698925-7E35-43E5-AD9E-3C6A5AFF6D98}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventProducer", "WebApp\EventProducer.csproj", "{DE698925-7E35-43E5-AD9E-3C6A5AFF6D98}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KafkaLib", "KafkaLib\KafkaLib.csproj", "{94575A7B-463C-4942-B74D-12A99BDEB26E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClickEventService", "ClickEventService\ClickEventService.csproj", "{52A6597C-2E34-4FAC-89EE-EA20176457B1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsumerWebApp", "ConsumerWebApp\ConsumerWebApp.csproj", "{196D8FCC-423B-492C-88BC-055FA3B97B8E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventConsumer", "ConsumerWebApp\EventConsumer.csproj", "{196D8FCC-423B-492C-88BC-055FA3B97B8E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextEventService", "TextEventService\TextEventService.csproj", "{1CE6DD9C-7B1E-4446-BC96-CBA4EA02AA61}"
 EndProject

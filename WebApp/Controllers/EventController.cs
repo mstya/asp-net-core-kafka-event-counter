@@ -33,7 +33,8 @@ namespace WebApp.Controllers
         [HttpPost]
         public Task PostMouseMoveEvent(string data)
         {
-            return producer.ProduceAsync(Topics.PostMouseMoveEvent, null, data, clickEventRand.Next(0, 1));
+            var partition = clickEventRand.Next(0, 2);
+            return producer.ProduceAsync(Topics.PostMouseMoveEvent, null, "Partition: " + partition + ". " + DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss") + " " + data, partition);
         }
     }
 }

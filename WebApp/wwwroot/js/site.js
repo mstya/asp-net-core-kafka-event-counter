@@ -14,6 +14,14 @@
         post(PostMouseMoveEvent, JSON.stringify(this));
     });
 
+    $("#runEvntBtn").click(function() {
+        for (var i = 0; i < 100; i++) {
+            $("#button").click();
+            $("#textarea").keyup();
+            $("#div").mousemove();
+        };
+    });
+
     function post(url, json) {
         return $.ajax({
             url: url,
