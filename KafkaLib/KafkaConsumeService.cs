@@ -2,41 +2,36 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using KafkaLib;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Hosting;
 
-namespace ClickEventService
+namespace KafkaLib
 {
-    public class KafkaConsumeService : IHostedService
+    public class KafkaConsumeService<THub> : IHostedService
+        where THub : Hub
     {
-        private readonly IHubContext<ServiceHub> hub;
+        private readonly IHubContext<THub> hub;
+
         private readonly KafkaConsumer consumer;
 
-        private readonly Dictionary<string, object> config = new Dictionary<string, object>
-        {
-            {"group.id", "click-event-service-group"},
-            {"bootstrap.servers", "localhost:9092"},
-            {"enable.auto.commit", "true"},
-            { "client.id", "event-counter" },
-        };
+        private readonly string topic;
 
         public static string Key { get; set; }
 
         public static int PartitionIndex { get; set; }
 
-        public KafkaConsumeService(IHubContext<ServiceHub> hub)
+        public KafkaConsumeService(IHubContext<THub> hub, Dictionary<string, object> config, string topic)
         {
             this.hub = hub;
-
-            this.consumer = new KafkaConsumer(this.config);
+            this.topic = topic;
+            this.consumer = new KafkaConsumer(config);
         }
 
         public Task StartAsync(CancellationToken cancellationToken)
         {
             Console.WriteLine("Service started");
 
-            consumer.Consume(Handle, Topics.PostClickEventTopic, Key, PartitionIndex, cancellationToken);
+            consumer.Consume(Handle, this.topic, Key, PartitionIndex, cancellationToken);
 
             return Task.CompletedTask;
         }
@@ -45,7 +40,7 @@ namespace ClickEventService
         {
             Console.WriteLine(data);
 
-            await this.hub.Clients.All.InvokeAsync("GetClickEvent", data);
+            await this.hub.Clients.All.InvokeAsync("OnEvent", data);
         }
 
         public Task StopAsync(CancellationToken cancellationToken)

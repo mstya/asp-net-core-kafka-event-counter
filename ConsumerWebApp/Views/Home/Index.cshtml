@@ -4,7 +4,7 @@
 
 <ul>
     <li>Click events count: <span id="clickEventsCount">0</span></li>
-    <li></li>
+    <li>Test events count: <span id="textEventsCount">0</span></li>
     <li></li>
     <li></li>
 </ul>
@@ -13,7 +13,7 @@
 {
     <script src="~/js/signalr-client-1.0.0-alpha2-final.js"></script>
     <script>
-        function connect(url) {
+        function connect(url, counterSelector) {
             let transportType = signalR.TransportType[getParameterByName('transport')] ||
                 signalR.TransportType.WebSockets;
             let logger = new signalR.ConsoleLogger(signalR.LogLevel.Information);
@@ -29,11 +29,11 @@
                 }
             });
 
-            connection.on('GetClickEvent',
+            connection.on('OnEvent',
                 (message) => {
-                    let $clickEventsCount = $("#clickEventsCount");
-                    let count = +$clickEventsCount.text();
-                    $clickEventsCount.text(++count);
+                    let $counter = $(counterSelector);
+                    let count = +$counter.text();
+                    $counter.text(++count);
                     console.log(message);
                 });
 
@@ -41,8 +41,10 @@
             }).catch(err => console.log(err));
         }
 
-        connect('http://10.10.41.235:41001/ClickEventService');
-        connect('http://10.10.41.235:41002/ClickEventService');
+        connect('http://10.10.41.235:41001/EventService', "#clickEventsCount");
+        connect('http://10.10.41.235:41002/EventService', "#clickEventsCount");
+        connect('http://10.10.41.235:41003/EventService', "#textEventsCount");
+        connect('http://10.10.41.235:41004/EventService', "#textEventsCount");
 
         function getParameterByName(name, url) {
             if (!url) {

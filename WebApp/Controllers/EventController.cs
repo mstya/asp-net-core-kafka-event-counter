@@ -20,13 +20,14 @@ namespace WebApp.Controllers
         public Task PostClickEvent(string data)
         {
             var partition = clickEventRand.Next(0, 2);
-            return producer.ProduceAsync(Topics.PostClickEventTopic, null, "Partition: " + partition + " " + DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss") + " " + data, partition);
+            return producer.ProduceAsync(Topics.PostClickEventTopic, null, "Partition: " + partition + ". " + DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss") + " " + data, partition);
         }
 
         [HttpPost]
         public Task PostTextEvent(string data)
         {
-            return producer.ProduceAsync(Topics.PostTextEventTopic, null, data, clickEventRand.Next(0, 1));
+            var partition = clickEventRand.Next(0, 2);
+            return producer.ProduceAsync(Topics.PostTextEventTopic, null, "Partition: " + partition + ". " + DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss") + " " + data, partition);
         }
 
         [HttpPost]

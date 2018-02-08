@@ -3,7 +3,7 @@ using KafkaLib;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 
-namespace ClickEventService
+namespace TextEventService
 {
     public class Program
     {
@@ -14,7 +14,7 @@ namespace ClickEventService
 
         public static IWebHost BuildWebHost(string[] args)
         {
-            string port = "41001";
+            string port = "41003";
             int partitionIndex = 0;
             if (args.Length == 2)
             {
@@ -25,7 +25,7 @@ namespace ClickEventService
             string url = "http://10.10.41.235:" + port;
             KafkaConsumeService<ServiceHub>.PartitionIndex = partitionIndex;
 
-            Console.WriteLine("Click event service {0}", partitionIndex);
+            Console.WriteLine("Text event service {0}", partitionIndex);
             Console.WriteLine("URL: " + url);
             Console.WriteLine("Partition index: " + KafkaConsumeService<ServiceHub>.PartitionIndex);
             Console.WriteLine("***********************************************************");

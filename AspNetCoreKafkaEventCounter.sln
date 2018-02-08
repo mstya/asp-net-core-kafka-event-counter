@@ -11,6 +11,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClickEventService", "ClickE
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsumerWebApp", "ConsumerWebApp\ConsumerWebApp.csproj", "{196D8FCC-423B-492C-88BC-055FA3B97B8E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextEventService", "TextEventService\TextEventService.csproj", "{1CE6DD9C-7B1E-4446-BC96-CBA4EA02AA61}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{59B8FAB7-1194-48F2-A862-7602B2CEE79E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,9 +37,17 @@ Global
 		{196D8FCC-423B-492C-88BC-055FA3B97B8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{196D8FCC-423B-492C-88BC-055FA3B97B8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{196D8FCC-423B-492C-88BC-055FA3B97B8E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CE6DD9C-7B1E-4446-BC96-CBA4EA02AA61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CE6DD9C-7B1E-4446-BC96-CBA4EA02AA61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CE6DD9C-7B1E-4446-BC96-CBA4EA02AA61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CE6DD9C-7B1E-4446-BC96-CBA4EA02AA61}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{52A6597C-2E34-4FAC-89EE-EA20176457B1} = {59B8FAB7-1194-48F2-A862-7602B2CEE79E}
+		{1CE6DD9C-7B1E-4446-BC96-CBA4EA02AA61} = {59B8FAB7-1194-48F2-A862-7602B2CEE79E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {86040847-30C7-4C8C-90CC-6A925D32A842}

@@ -4,7 +4,7 @@
     {
         public static string PostClickEventTopic = "post-click-event-topic2";
 
-        public static string PostTextEventTopic = "post-test-event-topic";
+        public static string PostTextEventTopic = "post-test-event-topic2";
 
         public static string PostDropDownEvent = "post-drop-down-event-topic";
 
